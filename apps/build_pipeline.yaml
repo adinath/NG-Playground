@@ -38,7 +38,7 @@ jobs:
     condition: succeeded()
 
   - script: |
-      yarn build -c dev
+      yarn build
     displayName: 'Frontend Build for Dev'
     condition: succeeded()
 
