@@ -34,7 +34,6 @@ jobs:
   - script: |
       yarn global add @angular/cli
       yarn
-      cd logger && yarn
     displayName: Yarn Install
     condition: succeeded()
 
