@@ -10,6 +10,6 @@
   "chromeWebSecurity": false,
   "reporter": "junit",
   "reporterOptions": {
-    "mochaFile": "test-report.xml"
+    "mochaFile": "integration-test-report.xml"
   }
 }

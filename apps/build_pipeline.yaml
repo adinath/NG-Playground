@@ -51,6 +51,15 @@ jobs:
     inputs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '**/test-report.xml'
+      testRunTitle: 'unit'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+  
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '**/integration-test-report.xml'
+      testRunTitle: 'integration'
       mergeTestResults: true
       failTaskOnFailedTests: true
 
