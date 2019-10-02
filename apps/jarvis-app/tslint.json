@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "jarvisPlaygroud", "camelCase"],
+    "component-selector": [true, "element", "jarvis-playgroud", "kebab-case"]
+  }
+}
