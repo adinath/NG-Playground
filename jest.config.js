@@ -7,5 +7,5 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html'],
   collectCoverage: true,
   reporters: ['default','jest-junit'],
-  coverageReporters: ['html','json','clover','cobertura','lcov']
+  coverageReporters: ['html','cobertura']
 };

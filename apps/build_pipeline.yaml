@@ -38,11 +38,6 @@ jobs:
     condition: succeeded()
 
   - script: |
-      yarn build
-    displayName: 'Frontend Build for Dev'
-    condition: succeeded()
-
-  - script: |
       yarn test
     displayName: 'Unit Test'
     condition: succeeded()
@@ -64,6 +59,11 @@ jobs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage/**/cobertura-coverage.xml'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+  
+  - script: |
+      yarn build
+    displayName: 'Frontend Build for Dev'
+    condition: succeeded()
 
   - publish: $(System.DefaultWorkingDirectory)/dist
     artifact: nx-dist
