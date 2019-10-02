@@ -51,16 +51,16 @@ jobs:
     inputs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '**/test-report.xml'
-      testRunTitle: 'unit'
-      mergeTestResults: false
+      testRunTitle: 'Jest Unit Tests'
+      mergeTestResults: true
       failTaskOnFailedTests: true
   
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '**/integration-test-report.xml'
-      testRunTitle: 'integration'
-      mergeTestResults: false
+      testRunTitle: 'Cypress Component/Integration Tests'
+      mergeTestResults: true
       failTaskOnFailedTests: true
 
   - task: PublishCodeCoverageResults@1
