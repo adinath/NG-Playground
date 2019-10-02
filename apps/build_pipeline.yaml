@@ -52,7 +52,7 @@ jobs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '**/test-report.xml'
       testRunTitle: 'unit'
-      mergeTestResults: true
+      mergeTestResults: false
       failTaskOnFailedTests: true
   
   - task: PublishTestResults@2
@@ -60,7 +60,7 @@ jobs:
       testResultsFormat: 'JUnit'
       testResultsFiles: '**/integration-test-report.xml'
       testRunTitle: 'integration'
-      mergeTestResults: true
+      mergeTestResults: false
       failTaskOnFailedTests: true
 
   - task: PublishCodeCoverageResults@1
