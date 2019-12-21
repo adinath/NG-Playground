@@ -123,6 +123,129 @@
           }
         }
       }
+    },
+    "eod-machine": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "apps/eod-machine",
+      "sourceRoot": "apps/eod-machine/src",
+      "prefix": "jarvis-playgroud",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/eod-machine",
+            "index": "apps/eod-machine/src/index.html",
+            "main": "apps/eod-machine/src/main.ts",
+            "polyfills": "apps/eod-machine/src/polyfills.ts",
+            "tsConfig": "apps/eod-machine/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/eod-machine/src/favicon.ico",
+              "apps/eod-machine/src/assets"
+            ],
+            "styles": ["apps/eod-machine/src/styles.less"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/eod-machine/src/environments/environment.ts",
+                  "with": "apps/eod-machine/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "eod-machine:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "eod-machine:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "eod-machine:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/eod-machine/tsconfig.app.json",
+              "apps/eod-machine/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/eod-machine/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/eod-machine/jest.config.js",
+            "tsConfig": "apps/eod-machine/tsconfig.spec.json",
+            "setupFile": "apps/eod-machine/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "eod-machine-e2e": {
+      "root": "apps/eod-machine-e2e",
+      "sourceRoot": "apps/eod-machine-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/eod-machine-e2e/cypress.json",
+            "tsConfig": "apps/eod-machine-e2e/tsconfig.e2e.json",
+            "devServerTarget": "eod-machine:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "eod-machine:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/eod-machine-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/eod-machine-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
