@@ -70,7 +70,7 @@ jobs:
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
   
   - script: |
-      yarn build
+      yarn build eod-machine
     displayName: 'Frontend Build for Dev'
     condition: succeeded()
 
