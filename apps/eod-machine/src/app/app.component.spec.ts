@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   it(`should have as title 'eod-machine'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('eod-machine');
+    expect(app.title).toEqual('Eod-Machine');
   });
 
   it('should render title', () => {
@@ -27,7 +27,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to eod-machine!'
+      'Welcome to Eod-Machine!'
     );
   });
 });
