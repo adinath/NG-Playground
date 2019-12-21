@@ -4,6 +4,6 @@ describe('eod-machine', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('Welcome to eod-machine!');
+    getGreeting().contains('Welcome to Eod-Machine!');
   });
 });
