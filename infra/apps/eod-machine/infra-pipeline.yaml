@@ -6,17 +6,20 @@
 name: '$(Build.SourceVersion)-$(Date:yyyyMMdd)$(Rev:.r)'
 
 trigger:
-- master
+  - master
 
 variables:
   ENDING_COMMIT_SHA: $(Build.SourceVersion)
 
 jobs:
-  - task: CloudFormationCreateOrUpdateStack@1
-  inputs:
-    awsCredentials: 'cf-automator'
-    regionName: 'us-east-2'
-    stackName: 'eod-stack'
-    templateSource: 'file'
-    templateFile: '$(System.DefaultWorkingDirectory)/infra/apps/eod-machine/static-hosting.yaml'
-    
+  - job: run_cf_templates
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - task: CloudFormationCreateOrUpdateStack@1
+        inputs:
+          awsCredentials: 'cf-automator'
+          regionName: 'us-east-2'
+          stackName: 'eod-stack'
+          templateSource: 'file'
+          templateFile: '$(System.DefaultWorkingDirectory)/infra/apps/eod-machine/static-hosting.yaml'
