@@ -9,7 +9,7 @@ Parameters:
   ErrorPagePath:
     Description: 'error page path'
     Type: String
-    default: '/404.html'
+    Default: '/404.html'
 
 Resources:
   S3Bucket:
