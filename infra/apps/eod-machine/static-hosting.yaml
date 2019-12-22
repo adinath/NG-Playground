@@ -93,7 +93,7 @@ Outputs:
     Value: !Ref PublishCredentials
   AccessKeySecret:
     Description: 'S3 secret key'
-    Value: !Ref PublishCredentials.SecretAccessKey
+    Value: !GetAtt PublishCredentials.SecretAccessKey
   DistributionId:
     Description: 'CloudFront distribution'
     Value: !Ref CloudFrontDistribution
