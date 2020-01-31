@@ -19,6 +19,9 @@
     },
     "eod-machine": {
       "tags": []
+    },
+    "ui-components": {
+      "tags": []
     }
   }
 }
