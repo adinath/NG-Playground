@@ -6,77 +6,75 @@
 name: '$(Build.SourceVersion)-$(Date:yyyyMMdd)$(Rev:.r)'
 
 trigger:
-- master
+  - master
 
 variables:
   ENDING_COMMIT_SHA: $(Build.SourceVersion)
 
-jobs:
-- job: build_test
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+stages:
+  - stage: Build
+    jobs:
+    - job: build_test
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
+          displayName: 'Install Node.js'
 
-  - script: |
-      yarn add yarn-audit-html
-      yarn audit --groups dependencies optionalDependencies --json | yarn run yarn-audit-html
-    displayName: Run yarn audit for non-dev dependencies (OWASP dependency check)
-    condition: succeeded()
+        - script: |
+            yarn add yarn-audit-html
+            yarn audit --groups dependencies optionalDependencies --json | yarn run yarn-audit-html
+          displayName: Run yarn audit for non-dev dependencies (OWASP dependency check)
+          condition: succeeded()
 
-  - publish: $(System.DefaultWorkingDirectory)/yarn-audit.html
-    artifact: yarn-audit.html
-    displayName: Publish yarn audit report
+        - publish: $(System.DefaultWorkingDirectory)/yarn-audit.html
+          artifact: yarn-audit.html
+          displayName: Publish yarn audit report
 
-  - script: |
-      yarn global add @angular/cli
-      yarn
-    displayName: Yarn Install
-    condition: succeeded()
+        - script: |
+            yarn global add @angular/cli
+            yarn
+          displayName: Yarn Install
+          condition: succeeded()
 
-  - script: |
-      yarn test
-    displayName: 'Unit Test'
-    condition: succeeded()
+        - script: |
+            yarn test
+          displayName: 'Unit Test'
+          condition: succeeded()
 
-  - script: |
-      yarn e2e --headless
-    displayName: 'E2E Test'
-    condition: succeeded()
+        - script: |
+            yarn e2e --headless
+          displayName: 'E2E Test'
+          condition: succeeded()
 
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: '**/test-report.xml'
-      testRunTitle: 'Jest Unit Tests'
-      mergeTestResults: true
-      failTaskOnFailedTests: true
-  
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: '**/integration-test-report.xml'
-      testRunTitle: 'Cypress Component/Integration Tests'
-      mergeTestResults: true
-      failTaskOnFailedTests: true
+        - task: PublishTestResults@2
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: '**/test-report.xml'
+            testRunTitle: 'Jest Unit Tests'
+            mergeTestResults: true
+            failTaskOnFailedTests: true
 
-  - task: PublishCodeCoverageResults@1
-    inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
-      reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-  
-  - script: |
-      yarn build eod-machine
-    displayName: 'Frontend Build for Dev'
-    condition: succeeded()
+        - task: PublishTestResults@2
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: '**/integration-test-report.xml'
+            testRunTitle: 'Cypress Component/Integration Tests'
+            mergeTestResults: true
+            failTaskOnFailedTests: true
 
-  - publish: $(System.DefaultWorkingDirectory)/dist
-    artifact: nx-dist
+        - task: PublishCodeCoverageResults@1
+          inputs:
+            codeCoverageTool: Cobertura
+            summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
+            reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
 
-  
+        - script: |
+            yarn build eod-machine
+          displayName: 'Frontend Build for Dev'
+          condition: succeeded()
 
-
+        - publish: $(System.DefaultWorkingDirectory)/dist
+          artifact: nx-dist

@@ -22,4 +22,13 @@ describe('AddressComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display addres works', () => {
+    const fixture1 = TestBed.createComponent(AddressComponent);
+    fixture1.detectChanges();
+    const compiled = fixture1.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain(
+      'address does not works!'
+    );
+  })
 });
