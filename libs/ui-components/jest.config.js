@@ -1,4 +1,5 @@
 module.exports = {
+  preset: 'jest-preset-angular',
   name: 'ui-components',
   preset: '../../jest.config.js',
   coverageDirectory: '../../coverage/libs/ui-components',

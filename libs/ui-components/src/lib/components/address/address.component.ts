@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Address } from './address-model';
 
 @Component({
   selector: 'jarvis-playgroud-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss']
 })
-export class AddressComponent implements OnInit {
 
-  constructor() { }
+export class AddressComponent{
+  address : Address
 
-  ngOnInit() {
-  }
+  constructor() {
+   }
 
 }

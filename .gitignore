@@ -40,3 +40,4 @@ Thumbs.db
 
 # Other files
 **/test-report.xml
+jest_html_reporters.html

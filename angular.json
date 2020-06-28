@@ -25,7 +25,11 @@
               "apps/jarvis-app/src/favicon.ico",
               "apps/jarvis-app/src/assets"
             ],
-            "styles": ["apps/jarvis-app/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "apps/jarvis-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +88,10 @@
               "apps/jarvis-app/tsconfig.app.json",
               "apps/jarvis-app/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/jarvis-app/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/jarvis-app/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +125,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/jarvis-app-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/jarvis-app-e2e/**"]
+            "tsConfig": [
+              "apps/jarvis-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/jarvis-app-e2e/**"
+            ]
           }
         }
       }
@@ -148,7 +160,9 @@
               "apps/eod-machine/src/favicon.ico",
               "apps/eod-machine/src/assets"
             ],
-            "styles": ["apps/eod-machine/src/styles.less"],
+            "styles": [
+              "apps/eod-machine/src/styles.less"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -207,7 +221,10 @@
               "apps/eod-machine/tsconfig.app.json",
               "apps/eod-machine/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/eod-machine/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/eod-machine/**"
+            ]
           }
         },
         "test": {
@@ -241,8 +258,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/eod-machine-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/eod-machine-e2e/**"]
+            "tsConfig": [
+              "apps/eod-machine-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/eod-machine-e2e/**"
+            ]
           }
         }
       }
@@ -260,7 +282,10 @@
               "libs/ui-components/tsconfig.lib.json",
               "libs/ui-components/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui-components/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui-components/**"
+            ]
           }
         },
         "test": {
