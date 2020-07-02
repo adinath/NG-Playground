@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Address } from '@jarvis-playgroud/ui-components'
+import { Person } from '@jarvis-playgroud/ui-components'
 
 @Component({
   selector: 'jarvis-playgroud-root',
@@ -8,16 +8,19 @@ import { Address } from '@jarvis-playgroud/ui-components'
 })
 export class AppComponent {
   title = "CROW's Club!!";
-  address: Address;
-  name: String;
+  person: Person;
+
   constructor(){
-    this.name = "Kaz Brekker";
-    this.address = {
+  this.person = {
+    name: "Kaz Brekker",
+    address: {
       streetAddress: '222 Main st',
       apartment: '1232',
       city: 'Ketterdam',
       stateCode: 'Z0',
       zip: '32321'
-    }
+    },
+   image: "someImage"
+  }
   }
 }
