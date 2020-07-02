@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jarvis-playgroud/ui-components": ["libs/ui-components/src/index.ts"]
+      "@jarvis-playgroud/ui-components": ["libs/ui-components/src/index.ts"],
+      "@jarvis-playgroud/functional-components": [
+        "libs/functional-components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

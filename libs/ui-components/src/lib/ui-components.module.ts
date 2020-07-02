@@ -5,6 +5,7 @@ import { NameComponent } from './components/name/name.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [AddressComponent, NameComponent]
+  declarations: [AddressComponent, NameComponent],
+  exports: [AddressComponent, NameComponent]
 })
 export class UiComponentsModule {}

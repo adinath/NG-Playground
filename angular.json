@@ -88,10 +88,7 @@
               "apps/jarvis-app/tsconfig.app.json",
               "apps/jarvis-app/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/jarvis-app/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/jarvis-app/**"]
           }
         },
         "test": {
@@ -125,13 +122,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/jarvis-app-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/jarvis-app-e2e/**"
-            ]
+            "tsConfig": ["apps/jarvis-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/jarvis-app-e2e/**"]
           }
         }
       }
@@ -160,9 +152,7 @@
               "apps/eod-machine/src/favicon.ico",
               "apps/eod-machine/src/assets"
             ],
-            "styles": [
-              "apps/eod-machine/src/styles.less"
-            ],
+            "styles": ["apps/eod-machine/src/styles.less"],
             "scripts": []
           },
           "configurations": {
@@ -221,10 +211,7 @@
               "apps/eod-machine/tsconfig.app.json",
               "apps/eod-machine/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/eod-machine/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/eod-machine/**"]
           }
         },
         "test": {
@@ -258,13 +245,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/eod-machine-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/eod-machine-e2e/**"
-            ]
+            "tsConfig": ["apps/eod-machine-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/eod-machine-e2e/**"]
           }
         }
       }
@@ -282,10 +264,7 @@
               "libs/ui-components/tsconfig.lib.json",
               "libs/ui-components/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ui-components/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ui-components/**"]
           }
         },
         "test": {
@@ -294,6 +273,37 @@
             "jestConfig": "libs/ui-components/jest.config.js",
             "tsConfig": "libs/ui-components/tsconfig.spec.json",
             "setupFile": "libs/ui-components/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "functional-components": {
+      "projectType": "library",
+      "root": "libs/functional-components",
+      "sourceRoot": "libs/functional-components/src",
+      "prefix": "jarvis-playgroud",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/functional-components/tsconfig.lib.json",
+              "libs/functional-components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/functional-components/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/functional-components/jest.config.js",
+            "tsConfig": "libs/functional-components/tsconfig.spec.json",
+            "setupFile": "libs/functional-components/src/test-setup.ts"
           }
         }
       },
